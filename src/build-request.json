@@ -1,0 +1,94 @@
+{
+  "kind": "build_request",
+  "title": "Make “High IQ” installable and distributable in Chrome (PWA + Chrome Web Store-ready assets)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "text": "Add Progressive Web App (PWA) support so the “High IQ” site is installable in Chrome (desktop + Android) and behaves like an app (standalone window) when installed.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Bro publish this on chrome"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A valid web app manifest is added (name: “High IQ”, start_url, display: \"standalone\", theme_color/background_color aligned to the existing warm theme).",
+        "`frontend/index.html` includes the necessary `<link rel=\"manifest\" ...>` and icon metadata so Chrome detects the app as installable.",
+        "When served over HTTPS, Chrome shows the “Install app” UI for the site (installability criteria met)."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement an app icon set suitable for Chrome install prompts and store listing, and ensure the manifest references the generated icon files.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Bro publish this on chrome"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Manifest references icons that include at least 192x192 and 512x512 PNG sizes.",
+        "Icons are included as static assets and load correctly (no 404s) when the app is running.",
+        "Icons visually match the existing High IQ branding (using the existing logo style)."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add a service worker to enable basic offline support for the app shell (landing page + core JS/CSS) so the installed app launches reliably even with intermittent connectivity.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Bro publish this on chrome"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A service worker is registered by the frontend and successfully installs/activates in Chrome DevTools > Application.",
+        "On repeat visits, the app shell assets are served from cache when offline (network throttled/offline in DevTools) and a user can at least open the UI.",
+        "No backend data corruption occurs due to offline mode; if live data is unavailable, the UI fails gracefully (e.g., shows a clear retry message)."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add a short “Chrome install / publish” documentation file explaining how to (1) install locally in Chrome, (2) package the build for distribution, and (3) submit the PWA to the Chrome Web Store (steps only; no external integrations).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Bro publish this on chrome"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Documentation is written in English and includes prerequisites, build steps, and where the generated icons/manifest live in the repo.",
+        "Documentation explicitly notes what cannot be automated in-repo (e.g., creating a Chrome Web Store developer account and completing the web store submission UI)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under the immutable frontend paths listed in SYSTEM_CONTEXT (compose existing hooks/components instead).",
+    "Keep backend as a single Motoko actor in backend/main.mo; no additional backend services.",
+    "Do not add third-party authentication (Internet Identity remains the only auth option)."
+  ],
+  "nonGoals": [
+    "Actually publishing the app into the Chrome Web Store on the user’s behalf (requires external accounts, manual submission, and approvals).",
+    "Building a Chrome Extension (Manifest V3 extension) unless explicitly requested; this request is treated as distributing/installing the web app in Chrome."
+  ],
+  "imageRequirements": {
+    "required": [
+      "High IQ app icon, flat vector/mark style, transparent background (high-iq-app-icon.dim_192x192.png)",
+      "High IQ app icon, flat vector/mark style, transparent background (high-iq-app-icon.dim_512x512.png)"
+    ],
+    "edits": []
+  }
+}

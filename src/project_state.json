@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build an AI-powered IQ testing website named \"High IQ\".",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- High IQ app icon, flat vector/mark style, transparent background (high-iq-app-icon.dim_192x192.png)\n- High IQ app icon, flat vector/mark style, transparent background (high-iq-app-icon.dim_512x512.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-the-core-app-shell-for-a-website-named-high-iq-including-a-public-landing-page-and-an-authenticated-experience-using-internet-identity",
+      "title": "Create the core app shell for a website named “High IQ”, including a public landing page and an authenticated experience using Internet Identity.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-ai-like-adaptive-iq-test-flow-no-external-ai-llm-services-that-selects-questions-based-on-user-performance-and-computes-a-final-iq-style-score-with-a-short-textual-summary",
+      "title": "Implement an “AI-like” adaptive IQ test flow (no external AI/LLM services) that selects questions based on user performance and computes a final IQ-style score with a short textual summary.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-the-main-ui-pages-components-landing-test-question-display-answer-selection-progress-results-score-breakdown-and-history-list-of-previous-test-attempts",
+      "title": "Create the main UI pages/components: Landing, Test (question display + answer selection + progress), Results (score + breakdown), and History (list of previous test attempts).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-establish-a-coherent-distinctive-visual-theme-for-high-iq-and-apply-it-consistently-across-all-pages-colors-typography-spacing-and-component-styling-avoid-a-blue-purple-palette",
+      "title": "Establish a coherent, distinctive visual theme for “High IQ” and apply it consistently across all pages (colors, typography, spacing, and component styling). Avoid a blue/purple palette.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-include-static-brand-imagery-for-the-app-logo-and-a-simple-hero-illustration-and-render-them-in-the-ui-from-frontend-public-assets-generated-no-backend-image-serving",
+      "title": "Generate and include static brand imagery for the app (logo and a simple hero illustration) and render them in the UI from frontend/public/assets/generated (no backend image serving).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-progressive-web-app-pwa-support-so-the-high-iq-site-is-installable-in-chrome-desktop-android-and-behaves-like-an-app-standalone-window-when-installed",
+      "title": "Add Progressive Web App (PWA) support so the “High IQ” site is installable in Chrome (desktop + Android) and behaves like an app (standalone window) when installed.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-app-icon-set-suitable-for-chrome-install-prompts-and-store-listing-and-ensure-the-manifest-references-the-generated-icon-files",
+      "title": "Implement an app icon set suitable for Chrome install prompts and store listing, and ensure the manifest references the generated icon files.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-service-worker-to-enable-basic-offline-support-for-the-app-shell-landing-page-core-js-css-so-the-installed-app-launches-reliably-even-with-intermittent-connectivity",
+      "title": "Add a service worker to enable basic offline support for the app shell (landing page + core JS/CSS) so the installed app launches reliably even with intermittent connectivity.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-short-chrome-install-publish-documentation-file-explaining-how-to-1-install-locally-in-chrome-2-package-the-build-for-distribution-and-3-submit-the-pwa-to-the-chrome-web-store-steps-only-no-external-integrations",
+      "title": "Add a short “Chrome install / publish” documentation file explaining how to (1) install locally in Chrome, (2) package the build for distribution, and (3) submit the PWA to the Chrome Web Store (steps only; no external integrations).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create an AI-powered IQ testing website (\"High IQ\")",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add a backend data model and API for: a built-in question bank with difficulty levels, per-user test sessions, recorded answers, and stored completed results so users can view past attempts.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Publish/distribute the \"High IQ\" app for Chrome (e.g., package for Chrome and publish via Chrome Web Store or otherwise make it installable/accessible in Chrome).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "High IQ",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

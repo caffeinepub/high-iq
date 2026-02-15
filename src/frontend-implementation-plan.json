@@ -1,0 +1,120 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "High IQ: PWA installability + Chrome Web Store-ready assets (frontend-only)",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "summary": "Add PWA manifest + HTML metadata so High IQ is installable in Chrome and launches in standalone mode.",
+      "acceptanceCriteria": [
+        "A valid web app manifest is added (name: “High IQ”, start_url, display: \"standalone\", theme_color/background_color aligned to the existing warm theme).",
+        "`frontend/index.html` includes the necessary `<link rel=\"manifest\" ...>` and icon metadata so Chrome detects the app as installable.",
+        "When served over HTTPS, Chrome shows the “Install app” UI for the site (installability criteria met)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/manifest.webmanifest",
+          "operation": "create",
+          "description": "Create a valid web app manifest for “High IQ” with start_url, display: \"standalone\", and warm-theme-aligned theme_color/background_color; include references to the required icon assets under frontend/public/assets/generated/."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Wire PWA metadata into the HTML shell: add <link rel=\"manifest\"> pointing to the manifest, set theme-color meta, and add icon-related metadata so Chrome recognizes installability."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Add minimal PWA bootstrapping in the app entry by registering the service worker on the client (and ensuring it only runs in production/secure contexts as appropriate)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Add Chrome install/store-ready app icons and ensure the manifest references them.",
+      "acceptanceCriteria": [
+        "Manifest references icons that include at least 192x192 and 512x512 PNG sizes.",
+        "Icons are included as static assets and load correctly (no 404s) when the app is running.",
+        "Icons visually match the existing High IQ branding (using the existing logo style)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/high-iq-app-icon.dim_192x192.png",
+          "operation": "create",
+          "description": "Add the generated 192x192 transparent PNG app icon at this exact path and ensure it matches existing High IQ branding."
+        },
+        {
+          "path": "frontend/public/assets/generated/high-iq-app-icon.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated 512x512 transparent PNG app icon at this exact path and ensure it matches existing High IQ branding."
+        },
+        {
+          "path": "frontend/public/manifest.webmanifest",
+          "operation": "modify",
+          "description": "Update the manifest icons array to reference frontend/public/assets/generated/high-iq-app-icon.dim_192x192.png and frontend/public/assets/generated/high-iq-app-icon.dim_512x512.png with correct sizes and type."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Add/adjust icon link metadata (e.g., rel=\"icon\" / rel=\"apple-touch-icon\" as appropriate) so browsers can pick up the generated icon assets without 404s."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add a service worker for basic offline app-shell caching with graceful UI behavior when live data is unavailable.",
+      "acceptanceCriteria": [
+        "A service worker is registered by the frontend and successfully installs/activates in Chrome DevTools > Application.",
+        "On repeat visits, the app shell assets are served from cache when offline (network throttled/offline in DevTools) and a user can at least open the UI.",
+        "No backend data corruption occurs due to offline mode; if live data is unavailable, the UI fails gracefully (e.g., shows a clear retry message)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/sw.js",
+          "operation": "create",
+          "description": "Create a service worker that provides basic offline support by caching the app shell (HTML shell + core static assets like manifest and icons) and serving cached responses when offline; ensure SPA navigations still render the UI shell."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Register the service worker (e.g., navigator.serviceWorker.register) and log/handle registration success/failure in a non-intrusive way."
+        },
+        {
+          "path": "frontend/src/components/OfflineBanner.tsx",
+          "operation": "create",
+          "description": "Create a small, reusable UI element that detects offline/online status and displays a clear retry/connection message when offline. Use the shadcn-ui component library (e.g., Alert) to present the banner. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire OfflineBanner into the app layout so offline state is visible across the app (landing/test/results/history) and users get clear feedback when connectivity is missing."
+        },
+        {
+          "path": "frontend/src/pages/ResultsPage.tsx",
+          "operation": "modify",
+          "description": "Adjust results loading to fail gracefully when offline or when cached/live data is unavailable (show a clear retry message rather than breaking the UI). Use shadcn-ui components for the message presentation where appropriate. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/TestPage.tsx",
+          "operation": "modify",
+          "description": "Ensure test-start and question-loading flows handle offline conditions safely (avoid attempts to submit answers when offline; show a clear retry/connection message). Use shadcn-ui components for user feedback where appropriate. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Add Chrome install/publish documentation for local install, packaging, and Chrome Web Store submission steps.",
+      "acceptanceCriteria": [
+        "Documentation is written in English and includes prerequisites, build steps, and where the generated icons/manifest live in the repo.",
+        "Documentation explicitly notes what cannot be automated in-repo (e.g., creating a Chrome Web Store developer account and completing the web store submission UI)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/CHROME_INSTALL_AND_PUBLISH.md",
+          "operation": "create",
+          "description": "Write step-by-step English documentation covering: (1) how to install locally in Chrome (desktop + Android), (2) how to build/package the production build output for distribution, and (3) how to submit the PWA to the Chrome Web Store. Explicitly note manual/out-of-repo steps (developer account, store UI submission). Include where to find frontend/public/manifest.webmanifest and the generated icons at frontend/public/assets/generated/high-iq-app-icon.dim_192x192.png and frontend/public/assets/generated/high-iq-app-icon.dim_512x512.png."
+        }
+      ]
+    }
+  ]
+}

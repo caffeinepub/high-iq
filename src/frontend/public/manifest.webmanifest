@@ -1,0 +1,26 @@
+{
+  "name": "High IQ - Adaptive IQ Testing",
+  "short_name": "High IQ",
+  "description": "Test your cognitive abilities with adaptive IQ testing",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "oklch(0.98 0.01 60)",
+  "theme_color": "oklch(0.65 0.18 45)",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/generated/high-iq-app-icon.dim_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/generated/high-iq-app-icon.dim_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "screenshots": []
+}

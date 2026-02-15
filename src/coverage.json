@@ -1,0 +1,98 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T04:55:57.460Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Add a short “Chrome install / publish” documentation file explaining how to (1) install locally in Chrome, (2) package the build for distribution, and (3) submit the PWA to the Chrome Web Store (steps only; no external integrations).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/CHROME_INSTALL_AND_PUBLISH.md"
+        ],
+        "matchedFiles": [
+          "frontend/CHROME_INSTALL_AND_PUBLISH.md"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Add Progressive Web App (PWA) support so the “High IQ” site is installable in Chrome (desktop + Android) and behaves like an app (standalone window) when installed.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/manifest.webmanifest",
+          "frontend/index.html",
+          "frontend/src/main.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/manifest.webmanifest",
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Implement an app icon set suitable for Chrome install prompts and store listing, and ensure the manifest references the generated icon files.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/high-iq-app-icon.dim_192x192.png",
+          "frontend/public/assets/generated/high-iq-app-icon.dim_512x512.png",
+          "frontend/public/manifest.webmanifest",
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/high-iq-app-icon.dim_192x192.png",
+          "frontend/public/assets/generated/high-iq-app-icon.dim_512x512.png",
+          "frontend/public/manifest.webmanifest",
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add a service worker to enable basic offline support for the app shell (landing page + core JS/CSS) so the installed app launches reliably even with intermittent connectivity.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/sw.js",
+          "frontend/src/main.tsx",
+          "frontend/src/components/OfflineBanner.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/pages/ResultsPage.tsx",
+          "frontend/src/pages/TestPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/sw.js",
+          "frontend/src/components/OfflineBanner.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/pages/ResultsPage.tsx",
+          "frontend/src/pages/TestPage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/CHROME_INSTALL_AND_PUBLISH.md",
+    "frontend/index.html",
+    "frontend/public/assets/generated/high-iq-app-icon.dim_192x192.png",
+    "frontend/public/assets/generated/high-iq-app-icon.dim_512x512.png",
+    "frontend/public/manifest.webmanifest",
+    "frontend/public/sw.js",
+    "frontend/src/App.tsx",
+    "frontend/src/components/OfflineBanner.tsx",
+    "frontend/src/pages/ResultsPage.tsx",
+    "frontend/src/pages/TestPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

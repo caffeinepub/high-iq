@@ -1,0 +1,51 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T04:55:57.458Z",
+  "summary": "Diff adds PWA scaffolding (manifest, index.html metadata, service worker, SW registration per file summary) plus offline UX components and documentation. Main uncertainty is whether the required 192x192 and 512x512 app icon PNG files themselves were actually added to the repo, since only references to them appear in text files.",
+  "missing_requirements": [
+    {
+      "id": "REQ-8",
+      "requirement": "Include the required app icon PNG assets (at least 192x192 and 512x512) as static files so they load with no 404s.",
+      "reason": "The manifest and index.html reference `/assets/generated/high-iq-app-icon.dim_192x192.png` and `/assets/generated/high-iq-app-icon.dim_512x512.png`, but the diff summary does not show these PNG files being added/modified (binary assets may be omitted from the provided diff). Without evidence of the files’ presence, the 'icons included as static assets and load correctly' criterion cannot be verified from this diff.",
+      "evidence": [
+        "frontend/public/manifest.webmanifest",
+        "frontend/index.html",
+        "frontend/public/sw.js"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Added Apple iOS PWA meta tags (apple-mobile-web-app-*), plus extra manifest fields like orientation/categories/screenshots beyond the stated acceptance criteria.",
+      "reason": "BuildRequest/AC only require Chrome installability via manifest link + icon metadata, standalone display, and warm theme colors; iOS-specific meta tags and additional manifest fields were not explicitly requested.",
+      "evidence": [
+        "frontend/index.html",
+        "frontend/public/manifest.webmanifest"
+      ]
+    },
+    {
+      "description": "Implemented in-app offline UX (OfflineBanner component, offline gating/toasts in TestPage, cached-results alert in ResultsPage).",
+      "reason": "REQ-9 focuses on service worker offline app-shell caching and graceful failure; specific UI components/alerts/toasts were not explicitly requested as named features (though they support the 'fails gracefully' AC).",
+      "evidence": [
+        "frontend/src/components/OfflineBanner.tsx",
+        "frontend/src/App.tsx",
+        "frontend/src/pages/TestPage.tsx",
+        "frontend/src/pages/ResultsPage.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.68,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/CHROME_INSTALL_AND_PUBLISH.md",
+    "frontend/index.html",
+    "frontend/public/manifest.webmanifest",
+    "frontend/public/sw.js",
+    "frontend/src/App.tsx",
+    "frontend/src/components/OfflineBanner.tsx",
+    "frontend/src/pages/ResultsPage.tsx",
+    "frontend/src/pages/TestPage.tsx",
+    "project_state.json"
+  ]
+}

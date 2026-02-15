@@ -1,0 +1,87 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-progressive-web-app-pwa-support-so-the-high-iq-site-is-installable-in-chrome-desktop-android-and-behaves-like-an-app-standalone-window-when-installed",
+      "featureTitle": "Add Progressive Web App (PWA) support so the “High IQ” site is installable in Chrome (desktop + Android) and behaves like an app (standalone window) when installed.",
+      "files": [
+        "frontend/index.html",
+        "frontend/public/manifest.webmanifest"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-an-app-icon-set-suitable-for-chrome-install-prompts-and-store-listing-and-ensure-the-manifest-references-the-generated-icon-files",
+      "featureTitle": "Implement an app icon set suitable for Chrome install prompts and store listing, and ensure the manifest references the generated icon files.",
+      "files": [
+        "frontend/index.html",
+        "frontend/public/manifest.webmanifest"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-service-worker-to-enable-basic-offline-support-for-the-app-shell-landing-page-core-js-css-so-the-installed-app-launches-reliably-even-with-intermittent-connectivity",
+      "featureTitle": "Add a service worker to enable basic offline support for the app shell (landing page + core JS/CSS) so the installed app launches reliably even with intermittent connectivity.",
+      "files": [
+        "frontend/public/sw.js",
+        "frontend/src/App.tsx",
+        "frontend/src/components/OfflineBanner.tsx",
+        "frontend/src/pages/ResultsPage.tsx",
+        "frontend/src/pages/TestPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-short-chrome-install-publish-documentation-file-explaining-how-to-1-install-locally-in-chrome-2-package-the-build-for-distribution-and-3-submit-the-pwa-to-the-chrome-web-store-steps-only-no-external-integrations",
+      "featureTitle": "Add a short “Chrome install / publish” documentation file explaining how to (1) install locally in Chrome, (2) package the build for distribution, and (3) submit the PWA to the Chrome Web Store (steps only; no external integrations).",
+      "files": [
+        "frontend/CHROME_INSTALL_AND_PUBLISH.md"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
